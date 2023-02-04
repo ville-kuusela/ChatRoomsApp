@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Chat App</title>
+    <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script defer src="script.js"></script>
+    <style>
+      html {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        background-color: rgb(223, 223, 223);
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+      }
+
+      .container {
+        background-color: white;
+        height: 75%;
+        width: 90%;
+        min-width: 200px;
+        max-width: 800px;
+        margin: 20px auto 20px auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .send-container {
+        width: 90%;
+        min-width: 200px;
+        max-width: 800px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+      }
+
+      #send-form {
+        width: 100%;
+        height: 35px;
+        display: grid;
+        grid-template-columns: 7fr 3fr;
+      }
+
+      .chat-container {
+        border: 2px solid rgb(224, 224, 224);
+        width: 90%;
+        height: 90%;
+        overflow: hidden;
+        overflow-y: scroll;
+      }
+
+      .bold {
+        font-weight: bold;
+      }
+
+      .colored {
+        color: rgb(240, 114, 41);
+      }
+
+      #chat {
+        width: 100%;
+        margin: 0px 10px 0px 10px;
+        text-align: left;
+        font-size: 1.25em;
+      }
+
+      h1 {
+        margin: 5px;
+      }
+
+      .menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="menu">
+        <h1>
+          Huone
+          <script>
+            document.write(window.location.href.split('/').pop());
+          </script>
+        </h1>
+        <a href="/">Poistu huoneesta</a>
+      </div>
+      <div class="chat-container">
+        <div id="chat"></div>
+      </div>
+    </div>
+    <div class="send-container">
+      <form id="send-form">
+        <input
+          autocomplete="off"
+          type="text"
+          id="msg-input"
+          placeholder="Kirjoita viesti..."
+          maxlength="200"
+        />
+        <button type="submit" id="send-button">Lähetä</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Chat App</title>
+
+    <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script defer src="script.js"></script>
+
+    <script type="text/javascript">
+      const createRoom = () => {
+        console.log('creating a new room');
+        socket.emit('create-room');
+      };
+    </script>
+    <style>
+      html {
+        width: 100%;
+        height: 100%;
+        font-family: 'Times New Roman', Times, serif;
+      }
+
+      body {
+        background-color: rgb(223, 223, 223);
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+      }
+
+      .container {
+        background-color: white;
+        height: 75%;
+        width: 90%;
+        min-width: 200px;
+        max-width: 800px;
+        margin: 20px auto 20px auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #joinContainer {
+        height: 25px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 25px;
+      }
+
+      input {
+        margin-right: 5px;
+        height: 25px;
+      }
+
+      .link {
+        color: rgb(20, 20, 20);
+        background-color: rgb(219, 219, 219);
+        border-radius: 3px;
+        padding: 5px 10px 5px 10px;
+      }
+
+      .link:hover {
+        color: rgb(0, 0, 0);
+        background-color: rgb(199, 199, 199);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Chat App</h1>
+      <h2 class="link" onclick="createRoom()">Luo uusi huone</h2>
+
+      <br />
+      <form id="joinContainer">
+        <input
+          autocomplete="off"
+          type="text"
+          id="join-input"
+          placeholder="Kirjoita huoneen ID"
+          maxlength="6"
+        />
+        <h3
+          class="link"
+          onclick="window.location.href = '/' + document.getElementById('join-input').value"
+        >
+          Liity
+        </h3>
+      </form>
+    </div>
+  </body>
+</html>
